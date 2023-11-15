@@ -1,13 +1,23 @@
 package com.solvd.laba.block1.universityEnrollment.persons;
 
+import com.solvd.laba.block1.universityEnrollment.course.AdmissionRequirements;
 import com.solvd.laba.block1.universityEnrollment.course.Course;
 import com.solvd.laba.block1.universityEnrollment.enums.Specialization;
+import com.solvd.laba.block1.universityEnrollment.exceptions.DepartmentNotSetException;
+import com.solvd.laba.block1.universityEnrollment.exceptions.InvalidDesiredSpecializationException;
+import com.solvd.laba.block1.universityEnrollment.exceptions.UniversityNotSetException;
 import com.solvd.laba.block1.universityEnrollment.university.Department;
 import com.solvd.laba.block1.universityEnrollment.university.University;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
 public class Student extends Person {
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
+    }
+    private static final Logger LOGGER = LogManager.getLogger(Student.class);
     private String studentID;
     private double gradePointAverage;
     private University desiredUniversity;
@@ -17,6 +27,17 @@ public class Student extends Person {
     public Student(String name, String surname, int age, String studentID, double gradePointAverage,
                    University desiredUniversity, Department desiredDepartment, Specialization desiredSpecialization) {
         super(name, surname, age);
+        if (desiredUniversity == null) {
+            LOGGER.error("University not set");
+            throw new UniversityNotSetException("University not set");
+        } else if (desiredDepartment == null) {
+            LOGGER.error("University not set");
+            throw new DepartmentNotSetException("Department not set");
+        } else if (desiredSpecialization == null) {
+            LOGGER.error("Specialization not set");
+            throw new InvalidDesiredSpecializationException("Specialization not set");
+        }
+
         this.studentID = studentID;
         this.gradePointAverage = gradePointAverage;
         this.desiredUniversity = desiredUniversity;

@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Department {
     private String departmentName;
-    private Set<Specialization> specializations = new HashSet<>();
+    private CustomLinkedList<Specialization> specializations = new CustomLinkedList<>();
 
     public Department(String departmentName) {
         this.departmentName = departmentName;
@@ -22,7 +22,7 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-    public Set<Specialization> getSpecializations() {
+    public CustomLinkedList<Specialization> getSpecializations() {
         return specializations;
     }
 

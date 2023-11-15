@@ -9,6 +9,7 @@ import com.solvd.laba.block1.universityEnrollment.exceptions.UniversityNotSetExc
 import com.solvd.laba.block1.universityEnrollment.persons.Person;
 import com.solvd.laba.block1.universityEnrollment.persons.Professor;
 import com.solvd.laba.block1.universityEnrollment.persons.Student;
+import com.solvd.laba.block1.universityEnrollment.university.CustomLinkedList;
 import com.solvd.laba.block1.universityEnrollment.university.Department;
 import com.solvd.laba.block1.universityEnrollment.university.University;
 import org.apache.logging.log4j.LogManager;

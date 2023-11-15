@@ -34,12 +34,8 @@ public class AdmissionRequirements implements ICountCost {
 
     @Override
     public double getCost(Student student) throws InvalidGPAException, UniversityNotSetException {
-        if (student.getDesiredUniversity() == null) {
-            LOGGER.error("University not set");
-            throw new UniversityNotSetException("University not set");
-        }
-
         double gpa = student.getGradePointAverage();
+
         if (gpa < MIN_VALID_GPA || gpa > MAX_VALID_GPA) {
             LOGGER.error("Invalid GPA for cost calculation: gpa < MIN_VALID_GPA & gpa > MAX_VALID_GPA");
             throw new InvalidGPAException("Invalid GPA for cost calculation");

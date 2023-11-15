@@ -22,7 +22,11 @@
             <AppenderRef ref="Console"/>
         </Logger>
 
-        <Logger name="com.solvd.laba.block1.universityEnrollment.course.AdmissionRequirements" level="info" additivity="false">
+        <Logger name="com.solvd.laba.block1.universityEnrollment.course" level="info" additivity="false">
+            <AppenderRef ref="SummaryFile"/>
+        </Logger>
+
+        <Logger name="com.solvd.laba.block1.universityEnrollment.persons" level="error" additivity="false">
             <AppenderRef ref="SummaryFile"/>
         </Logger>
 
