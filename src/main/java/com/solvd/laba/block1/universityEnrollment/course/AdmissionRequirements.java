@@ -33,7 +33,7 @@ public class AdmissionRequirements implements ICountCost {
     }
 
     @Override
-    public double getCost(Student student) throws InvalidGPAException, UniversityNotSetException {
+    public final double getCost(Student student) throws InvalidGPAException, UniversityNotSetException {
         double gpa = student.getGradePointAverage();
 
         if (gpa < MIN_VALID_GPA || gpa > MAX_VALID_GPA) {
