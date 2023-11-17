@@ -2,18 +2,22 @@ package com.solvd.laba.block1.universityEnrollment.persons;
 
 import com.solvd.laba.block1.universityEnrollment.course.Course;
 import com.solvd.laba.block1.universityEnrollment.enums.Subject;
+import com.solvd.laba.block1.universityEnrollment.exceptions.InvalidAgeException;
 import com.solvd.laba.block1.universityEnrollment.interfaces.IReport;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 public class Professor extends Person implements IReport {
+    private static final Logger LOGGER = LogManager.getLogger(Student.class);
     private String employeeID;
     private Set<Subject> specializations = new HashSet<>();
 
-    public Professor(String name, String surname, int age, String employeeID) {
-        super(name, surname, age);
+    public Professor(String name, String surname, String employeeID) {
+        super(name, surname);
         this.employeeID = employeeID;
     }
 
@@ -46,6 +50,20 @@ public class Professor extends Person implements IReport {
     @Override
     public String getDescription() {
         return "Professor";
+    }
+
+    @Override
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public void setAge(int age) throws InvalidAgeException {
+        if (age < 0) {
+            LOGGER.error("Age cannot be negative");
+            throw new InvalidAgeException("Age cannot be negative");
+        }
+        this.age = age;
     }
 
     @Override
