@@ -22,7 +22,7 @@ public class Main {
     }
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DepartmentNotSetException {
         University myUniversity = new University("My University");
 
         Department computerScience = new Department("Computer Science");
@@ -58,21 +58,32 @@ public class Main {
             prof2.setAge(50);
             student1.setAge(21);
             student1.setGradePointAverage(86);
-            student1.setDesiredUniversity(myUniversity);
             student1.setDesiredDepartment(computerScience);
-            student1.setDesiredSpecialization(Specialization.SOFTWARE_ENGINEERING);
             student2.setAge(22);
             student2.setGradePointAverage(93);
-            student2.setDesiredUniversity(myUniversity);
             student2.setDesiredDepartment(mathematics);
-            student2.setDesiredSpecialization(Specialization.APPLIED_MATH);
             person.setAge(20);
             person.setGradePointAverage(92);
-            person.setDesiredUniversity(kpi);
             person.setDesiredDepartment(mathematics);
+        } catch (InvalidAgeException | DepartmentNotSetException e) {
+            LOGGER.error(e.getMessage());
+        }
+
+        person.setDesiredDepartment(mathematics);
+
+        try {
+            student1.setDesiredSpecialization(Specialization.SOFTWARE_ENGINEERING);
+            student2.setDesiredSpecialization(Specialization.APPLIED_MATH);
             person.setDesiredSpecialization(Specialization.APPLIED_MATH);
-        } catch (InvalidAgeException | InvalidGPAException | UniversityNotSetException
-                | DepartmentNotSetException | InvalidDesiredSpecializationException e) {
+        } catch (InvalidDesiredSpecializationException e) {
+            LOGGER.error(e.getMessage());
+        }
+
+        try {
+            student1.setDesiredUniversity(myUniversity);
+            student2.setDesiredUniversity(myUniversity);
+            person.setDesiredUniversity(kpi);
+        } catch (UniversityNotSetException e) {
             LOGGER.error(e.getMessage());
         }
 
