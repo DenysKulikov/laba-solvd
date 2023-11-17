@@ -4,12 +4,9 @@ import com.solvd.laba.block1.universityEnrollment.course.AdmissionRequirements;
 import com.solvd.laba.block1.universityEnrollment.course.Course;
 import com.solvd.laba.block1.universityEnrollment.enums.Specialization;
 import com.solvd.laba.block1.universityEnrollment.enums.Subject;
-import com.solvd.laba.block1.universityEnrollment.exceptions.InvalidGPAException;
-import com.solvd.laba.block1.universityEnrollment.exceptions.UniversityNotSetException;
-import com.solvd.laba.block1.universityEnrollment.persons.Person;
+import com.solvd.laba.block1.universityEnrollment.exceptions.*;
 import com.solvd.laba.block1.universityEnrollment.persons.Professor;
 import com.solvd.laba.block1.universityEnrollment.persons.Student;
-import com.solvd.laba.block1.universityEnrollment.university.CustomLinkedList;
 import com.solvd.laba.block1.universityEnrollment.university.Department;
 import com.solvd.laba.block1.universityEnrollment.university.University;
 import org.apache.logging.log4j.LogManager;
@@ -33,8 +30,8 @@ public class Main {
         computerScience.addSpecialization(Specialization.SOFTWARE_ENGINEERING);
         mathematics.addSpecialization(Specialization.APPLIED_MATH);
 
-        Professor prof1 = new Professor("Smith", "Ronan", 45, "EMP123");
-        Professor prof2 = new Professor("Johnson", "Melbourne", 50, "EMP456");
+        Professor prof1 = new Professor("Smith", "Ronan", "EMP123");
+        Professor prof2 = new Professor("Johnson", "Melbourne", "EMP456");
         prof1.addSubject(Subject.MATH);
         prof1.addSubject(Subject.PROGRAMMING);
         prof2.addSubject(Subject.PROGRAMMING);
@@ -48,16 +45,37 @@ public class Main {
         kpi.addDepartment(computerScience);
         kpi.addDepartment(mathematics);
 
-        Student student1 = new Student("Alice", "Lord", 20, "STU001", 60,
-                myUniversity, computerScience, Specialization.SOFTWARE_ENGINEERING);
-        Student student2 = new Student("Bob", "Iger", 22, "STU002", 93,
-                myUniversity, mathematics, Specialization.APPLIED_MATH);
+        Student student1 = new Student("Alice", "Lord", "STU001");
+        Student student2 = new Student("Bob", "Iger", "STU002");
 
         LOGGER.info("University Name: " + myUniversity.getUniversityName());
         LOGGER.debug("Departments: " + myUniversity.departmentsNumber());
 
-        Person person = new Student("Denys", "Kulikov", 21, "1", 86,
-                kpi, mathematics, Specialization.APPLIED_MATH);
+        Student person = new Student("Denys", "Kulikov", "STU003");
+
+        try {
+            prof1.setAge(45);
+            prof2.setAge(50);
+            student1.setAge(21);
+            student1.setGradePointAverage(86);
+            student1.setDesiredUniversity(myUniversity);
+            student1.setDesiredDepartment(computerScience);
+            student1.setDesiredSpecialization(Specialization.SOFTWARE_ENGINEERING);
+            student2.setAge(22);
+            student2.setGradePointAverage(93);
+            student2.setDesiredUniversity(myUniversity);
+            student2.setDesiredDepartment(mathematics);
+            student2.setDesiredSpecialization(Specialization.APPLIED_MATH);
+            person.setAge(20);
+            person.setGradePointAverage(92);
+            person.setDesiredUniversity(kpi);
+            person.setDesiredDepartment(mathematics);
+            person.setDesiredSpecialization(Specialization.APPLIED_MATH);
+        } catch (InvalidAgeException | InvalidGPAException | UniversityNotSetException
+                | DepartmentNotSetException | InvalidDesiredSpecializationException e) {
+            LOGGER.error(e.getMessage());
+        }
+
         System.out.println("Person description: " + person.getDescription());
         System.out.println(person);
         person.joinCourse(programmingCourse);
@@ -66,9 +84,9 @@ public class Main {
         AdmissionRequirements admissionRequirements =
                 new AdmissionRequirements(kpi, student1, prof1);
         try {
-            admissionRequirements.getCost((Student) person);
+            admissionRequirements.getCost(person);
         } catch (InvalidGPAException | UniversityNotSetException e) {
-            throw new RuntimeException(e);
+            LOGGER.error(e.getMessage());
         }
 
         try(FileReader fileReader = new FileReader(new File("log-file.log"))) {
@@ -82,7 +100,7 @@ public class Main {
             String fileContentAsString = fileContent.toString();
             System.out.println(fileContentAsString);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            LOGGER.error(e.getMessage());
         }
 
         try(FileReader fileReader = new FileReader(new File("summary-file.log"))) {
@@ -96,7 +114,7 @@ public class Main {
             String fileContentAsString = fileContent.toString();
             System.out.println(fileContentAsString);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            LOGGER.error(e.getMessage());
         }
     }
 }

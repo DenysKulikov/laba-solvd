@@ -1,9 +1,9 @@
 package com.solvd.laba.block1.universityEnrollment.persons;
 
-import com.solvd.laba.block1.universityEnrollment.course.AdmissionRequirements;
 import com.solvd.laba.block1.universityEnrollment.course.Course;
 import com.solvd.laba.block1.universityEnrollment.enums.Specialization;
 import com.solvd.laba.block1.universityEnrollment.exceptions.DepartmentNotSetException;
+import com.solvd.laba.block1.universityEnrollment.exceptions.InvalidAgeException;
 import com.solvd.laba.block1.universityEnrollment.exceptions.InvalidDesiredSpecializationException;
 import com.solvd.laba.block1.universityEnrollment.exceptions.UniversityNotSetException;
 import com.solvd.laba.block1.universityEnrollment.university.Department;
@@ -14,9 +14,6 @@ import org.apache.logging.log4j.Logger;
 import java.util.Objects;
 
 public class Student extends Person {
-    static {
-        System.setProperty("log4j.configurationFile", "log4j2.xml");
-    }
     private static final Logger LOGGER = LogManager.getLogger(Student.class);
     private String studentID;
     private double gradePointAverage;
@@ -24,25 +21,9 @@ public class Student extends Person {
     private Department desiredDepartment;
     private Specialization desiredSpecialization;
 
-    public Student(String name, String surname, int age, String studentID, double gradePointAverage,
-                   University desiredUniversity, Department desiredDepartment, Specialization desiredSpecialization) {
-        super(name, surname, age);
-        if (desiredUniversity == null) {
-            LOGGER.error("University not set");
-            throw new UniversityNotSetException("University not set");
-        } else if (desiredDepartment == null) {
-            LOGGER.error("University not set");
-            throw new DepartmentNotSetException("Department not set");
-        } else if (desiredSpecialization == null) {
-            LOGGER.error("Specialization not set");
-            throw new InvalidDesiredSpecializationException("Specialization not set");
-        }
-
+    public Student(String name, String surname, String studentID) {
+        super(name, surname);
         this.studentID = studentID;
-        this.gradePointAverage = gradePointAverage;
-        this.desiredUniversity = desiredUniversity;
-        this.desiredDepartment = desiredDepartment;
-        this.desiredSpecialization = desiredSpecialization;
     }
 
     public String getStudentID() {
@@ -59,10 +40,6 @@ public class Student extends Person {
 
     public void setGradePointAverage(double gradePointAverage) {
         this.gradePointAverage = gradePointAverage;
-    }
-
-    public void setUniversity(University university) {
-        this.desiredUniversity = university;
     }
 
     @Override
@@ -85,6 +62,10 @@ public class Student extends Person {
     }
 
     public void setDesiredUniversity(University desiredUniversity) {
+        if (desiredUniversity == null) {
+            LOGGER.error("University not set");
+            throw new UniversityNotSetException("University not set");
+        }
         this.desiredUniversity = desiredUniversity;
     }
 
@@ -93,6 +74,10 @@ public class Student extends Person {
     }
 
     public void setDesiredDepartment(Department desiredDepartment) {
+        if (desiredDepartment == null) {
+            LOGGER.error("Department not set");
+            throw new DepartmentNotSetException("Department not set");
+        }
         this.desiredDepartment = desiredDepartment;
     }
 
@@ -101,7 +86,31 @@ public class Student extends Person {
     }
 
     public void setDesiredSpecialization(Specialization desiredSpecialization) {
+        if (desiredSpecialization == null) {
+            LOGGER.error("Specialization not set");
+            throw new InvalidDesiredSpecializationException("Specialization not set");
+        }
         this.desiredSpecialization = desiredSpecialization;
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public void setAge(int age) throws InvalidAgeException {
+        if (age < 0) {
+            LOGGER.error("Age cannot be negative");
+            throw new InvalidAgeException("Age cannot be negative");
+        }
+
+        this.age = age;
     }
 
     @Override
