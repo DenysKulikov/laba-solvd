@@ -61,7 +61,7 @@ public class Student extends Person {
         return desiredUniversity;
     }
 
-    public void setDesiredUniversity(University desiredUniversity) {
+    public void setDesiredUniversity(University desiredUniversity) throws UniversityNotSetException {
         if (desiredUniversity == null) {
             LOGGER.error("University not set");
             throw new UniversityNotSetException("University not set");
@@ -73,7 +73,7 @@ public class Student extends Person {
         return desiredDepartment;
     }
 
-    public void setDesiredDepartment(Department desiredDepartment) {
+    public void setDesiredDepartment(Department desiredDepartment) throws DepartmentNotSetException {
         if (desiredDepartment == null) {
             LOGGER.error("Department not set");
             throw new DepartmentNotSetException("Department not set");
@@ -85,7 +85,7 @@ public class Student extends Person {
         return desiredSpecialization;
     }
 
-    public void setDesiredSpecialization(Specialization desiredSpecialization) {
+    public void setDesiredSpecialization(Specialization desiredSpecialization) throws InvalidDesiredSpecializationException {
         if (desiredSpecialization == null) {
             LOGGER.error("Specialization not set");
             throw new InvalidDesiredSpecializationException("Specialization not set");
