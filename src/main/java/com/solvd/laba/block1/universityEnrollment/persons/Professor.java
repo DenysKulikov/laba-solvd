@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Professor extends Person implements IReport {
-    private static final Logger LOGGER = LogManager.getLogger(Student.class);
+    private static final Logger LOGGER = LogManager.getLogger(Professor.class);
     private String employeeID;
     private Set<Subject> specializations = new HashSet<>();
 
