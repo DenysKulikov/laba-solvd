@@ -2,13 +2,12 @@ package com.solvd.laba.block1.universityEnrollment.university;
 
 import com.solvd.laba.block1.universityEnrollment.enums.Specialization;
 
-import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class Department {
     private String departmentName;
-    private CustomLinkedList<Specialization> specializations = new CustomLinkedList<>();
+    private List<Specialization> specializations = new CustomLinkedList<>();
 
     public Department(String departmentName) {
         this.departmentName = departmentName;
@@ -22,7 +21,7 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-    public CustomLinkedList<Specialization> getSpecializations() {
+    public List<Specialization> getSpecializations() {
         return specializations;
     }
 

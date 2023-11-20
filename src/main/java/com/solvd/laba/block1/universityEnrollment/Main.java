@@ -29,6 +29,7 @@ public class Main {
         Department mathematics = new Department("Mathematics");
         computerScience.addSpecialization(Specialization.SOFTWARE_ENGINEERING);
         mathematics.addSpecialization(Specialization.APPLIED_MATH);
+        System.out.println(mathematics.getSpecializations());
 
         Professor prof1 = new Professor("Smith", "Ronan", "EMP123");
         Professor prof2 = new Professor("Johnson", "Melbourne", "EMP456");
