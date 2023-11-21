@@ -69,4 +69,18 @@ public class CustomLinkedList<T> {
     public int size() {
         return size;
     }
+
+    // Get element at a specific index
+    public T get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
+
+        Node<T> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+
+        return current.data;
+    }
 }
