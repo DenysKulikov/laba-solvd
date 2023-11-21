@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <File name="File" fileName="log-file.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <File name="SummaryFile" fileName="summary-file.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.solvd.laba.block1.universityEnrollment.Main" level="debug">
+            <AppenderRef ref="File"/>
+        </Logger>
+
+        <Logger name="com.solvd.laba.block1.universityEnrollment.Main" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="com.solvd.laba.block1.universityEnrollment.course" level="info" additivity="false">
+            <AppenderRef ref="SummaryFile"/>
+        </Logger>
+
+        <Logger name="com.solvd.laba.block1.universityEnrollment.persons" level="error" additivity="false">
+            <AppenderRef ref="SummaryFile"/>
+        </Logger>
+
+        <Root level="error">
+        </Root>
+    </Loggers>
+</Configuration>
