@@ -14,12 +14,9 @@
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="com.solvd.laba.block1.universityEnrollment.Main" level="debug">
-            <AppenderRef ref="File"/>
-        </Logger>
-
-        <Logger name="com.solvd.laba.block1.universityEnrollment.Main" level="trace" additivity="false">
+        <Logger name="com.solvd.laba.block1.universityEnrollment.Main" level="trace">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
         </Logger>
 
         <Logger name="com.solvd.laba.block1.universityEnrollment.course" level="info" additivity="false">

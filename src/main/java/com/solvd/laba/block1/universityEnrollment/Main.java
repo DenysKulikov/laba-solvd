@@ -9,12 +9,17 @@ import com.solvd.laba.block1.universityEnrollment.persons.Professor;
 import com.solvd.laba.block1.universityEnrollment.persons.Student;
 import com.solvd.laba.block1.universityEnrollment.university.Department;
 import com.solvd.laba.block1.universityEnrollment.university.University;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Main {
     static {
@@ -49,8 +54,8 @@ public class Main {
         Student student1 = new Student("Alice", "Lord", "STU001");
         Student student2 = new Student("Bob", "Iger", "STU002");
 
-        LOGGER.info("University Name: " + myUniversity.getUniversityName());
-        LOGGER.debug("Departments: " + myUniversity.departmentsNumber());
+        LOGGER.trace("University Name: " + myUniversity.getUniversityName());
+        LOGGER.trace("Departments: " + myUniversity.departmentsNumber());
 
         Student person = new Student("Denys", "Kulikov", "STU003");
 
@@ -101,30 +106,37 @@ public class Main {
             LOGGER.error(e.getMessage());
         }
 
-        try(FileReader fileReader = new FileReader(new File("log-file.log"))) {
-            int character;
-            StringBuilder fileContent = new StringBuilder();
+        try {
+            // Read the entire file into a String using Apache Commons FileUtils
+            File file = new File("summary-file.log");
+            String fileContent = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
 
-            while ((character = fileReader.read()) != -1) {
-                fileContent.append((char) character);
-            }
-
-            String fileContentAsString = fileContent.toString();
-            System.out.println(fileContentAsString);
+            // Print the file content using StringUtils
+            LOGGER.trace(StringUtils.defaultString(fileContent));
         } catch (IOException e) {
-            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+            // Consider logging the exception using your logger, e.g., LOGGER.error(e.getMessage());
         }
 
-        try(FileReader fileReader = new FileReader(new File("summary-file.log"))) {
-            int character;
-            StringBuilder fileContent = new StringBuilder();
+        List<String> wordsList = new ArrayList<>();
 
-            while ((character = fileReader.read()) != -1) {
-                fileContent.append((char) character);
-            }
+        try {
+            // Read the entire file into a String using Apache Commons IOUtils
+            String fileContent = FileUtils.readFileToString(new File("input.txt"), StandardCharsets.UTF_8);
 
-            String fileContentAsString = fileContent.toString();
-            System.out.println(fileContentAsString);
+            // Split the content into words using StringUtils
+            String[] words = StringUtils.split(fileContent);
+
+            // Add words to the ArrayList
+            Collections.addAll(wordsList, words);
+
+            // Count the occurrences of each word using a HashMap
+            Map<String, Long> wordCountMap = Arrays.stream(words).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+            // Count the number of unique elements
+            long uniqueElementsCount = wordCountMap.values().stream().filter(count -> count == 1).count();
+            LOGGER.info("Number of unique elements: " + uniqueElementsCount);
+
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
