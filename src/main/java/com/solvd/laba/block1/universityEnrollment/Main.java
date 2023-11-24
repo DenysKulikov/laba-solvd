@@ -17,7 +17,8 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -118,8 +119,6 @@ public class Main {
             // Consider logging the exception using your logger, e.g., LOGGER.error(e.getMessage());
         }
 
-        List<String> wordsList = new ArrayList<>();
-
         try {
             // Read the entire file into a String using Apache Commons IOUtils
             String fileContent = FileUtils.readFileToString(new File("input.txt"), StandardCharsets.UTF_8);
@@ -127,16 +126,15 @@ public class Main {
             // Split the content into words using StringUtils
             String[] words = StringUtils.split(fileContent);
 
-            // Add words to the ArrayList
-            Collections.addAll(wordsList, words);
-
             // Count the occurrences of each word using a HashMap
-            Map<String, Long> wordCountMap = Arrays.stream(words).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+            Map<String, Long> wordCountMap = Arrays.stream(words).collect(Collectors.groupingBy(Function.identity(),
+                    Collectors.counting()));
 
             // Count the number of unique elements
             long uniqueElementsCount = wordCountMap.values().stream().filter(count -> count == 1).count();
-            LOGGER.info("Number of unique elements: " + uniqueElementsCount);
-
+            // Write the result to text_unique_words.txt using FileUtils
+            FileUtils.writeStringToFile(new File("text_unique_words.txt"),
+                    "Number of unique elements: " + uniqueElementsCount, StandardCharsets.UTF_8);
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
