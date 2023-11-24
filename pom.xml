@@ -10,6 +10,8 @@
 
     <properties>
         <log4jVersion>2.21.1</log4jVersion>
+        <commons-lang3Version>3.13.0</commons-lang3Version>
+        <commons-ioVersion>2.15.0</commons-ioVersion>
     </properties>
 
     <dependencies>
@@ -23,6 +25,18 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4jVersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3Version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-ioVersion}</version>
         </dependency>
     </dependencies>
 
