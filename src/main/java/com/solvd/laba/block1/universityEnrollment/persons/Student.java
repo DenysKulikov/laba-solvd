@@ -3,7 +3,6 @@ package com.solvd.laba.block1.universityEnrollment.persons;
 import com.solvd.laba.block1.universityEnrollment.course.Course;
 import com.solvd.laba.block1.universityEnrollment.enums.Specialization;
 import com.solvd.laba.block1.universityEnrollment.exceptions.DepartmentNotSetException;
-import com.solvd.laba.block1.universityEnrollment.exceptions.InvalidAgeException;
 import com.solvd.laba.block1.universityEnrollment.exceptions.InvalidDesiredSpecializationException;
 import com.solvd.laba.block1.universityEnrollment.exceptions.UniversityNotSetException;
 import com.solvd.laba.block1.universityEnrollment.university.Department;
@@ -91,26 +90,6 @@ public class Student extends Person {
             throw new InvalidDesiredSpecializationException("Specialization not set");
         }
         this.desiredSpecialization = desiredSpecialization;
-    }
-
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-
-    @Override
-    public int getAge() {
-        return age;
-    }
-
-    @Override
-    public void setAge(int age) throws InvalidAgeException {
-        if (age < 0) {
-            LOGGER.error("Age cannot be negative");
-            throw new InvalidAgeException("Age cannot be negative");
-        }
-
-        this.age = age;
     }
 
     @Override
