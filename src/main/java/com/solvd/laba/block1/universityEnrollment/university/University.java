@@ -1,6 +1,8 @@
 package com.solvd.laba.block1.universityEnrollment.university;
 
+import com.solvd.laba.block1.universityEnrollment.enums.Country;
 import com.solvd.laba.block1.universityEnrollment.interfaces.Extensible;
+import com.solvd.laba.block1.universityEnrollment.interfaces.ISummarize;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -9,16 +11,15 @@ import java.util.Set;
 public final class University implements Extensible {
     private final String universityName;
     private Set<Department> departments = new HashSet<>();
-    public static final String COUNTRY;
+    public static final Country COUNTRY;
 
     static {
-        COUNTRY = "Ukraine";
+        COUNTRY = Country.UKRAINE;
     }
 
     public University(String universityName) {
         this.universityName = universityName;
     }
-
 
     public Set<Department> getDepartments() {
         return departments;
@@ -35,6 +36,10 @@ public final class University implements Extensible {
     @Override
     public void addDepartment(Department department) {
         departments.add(department);
+    }
+
+    public String summarize(ISummarize iSummarize) {
+        return iSummarize.summarize(null);
     }
 
     @Override

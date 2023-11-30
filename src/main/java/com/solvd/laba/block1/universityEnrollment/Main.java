@@ -17,15 +17,18 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Main {
-    static {
-        System.setProperty("log4j.configurationFile", "log4j2.xml");
-    }
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws DepartmentNotSetException {
@@ -138,5 +141,35 @@ public class Main {
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
+
+        List<String> words = new ArrayList<>(List.of("apple", "banana", "orange", "kiwi", "strawberry"));
+
+        words.sort((word1, word2) -> Integer.compare(word2.length(), word1.length()));
+        LOGGER.trace("Largest word: " + words.get(0));
+
+        Runnable runnable = () -> LOGGER.trace(3);
+        runnable.run();
+        Consumer course = v1 -> LOGGER.trace(v1);
+        course.accept(1);
+        Supplier supplier = () -> 22;
+        int value = (int) supplier.get();
+        Function function = v2 -> v2;
+        function.apply("1");
+        Predicate predicate = val -> true;
+        predicate.test(5);
+
+        String string = (prof1.provideReport(() -> "string"));
+        LOGGER.trace(string);
+
+        AtomicReference<String> line1 = new AtomicReference<>();
+        kpi.summarize((msg) -> {
+            line1.set(msg);
+            return msg;
+        });
+        LOGGER.trace(line1.get());
+
+        department.provideSpecialization(() -> Specialization.SOFTWARE_ENGINEERING);
     }
+
 }
+

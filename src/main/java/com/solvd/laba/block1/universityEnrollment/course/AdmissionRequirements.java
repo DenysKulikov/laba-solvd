@@ -12,9 +12,6 @@ import org.apache.logging.log4j.Logger;
 import java.util.List;
 
 public class AdmissionRequirements implements ICountCost {
-    static {
-        System.setProperty("log4j.configurationFile", "log4j2.xml");
-    }
     private static final Logger LOGGER = LogManager.getLogger(AdmissionRequirements.class);
     private University university;
     private Student student;

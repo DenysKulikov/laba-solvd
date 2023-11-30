@@ -1,6 +1,7 @@
 package com.solvd.laba.block1.universityEnrollment.persons;
 
 import com.solvd.laba.block1.universityEnrollment.course.Course;
+import com.solvd.laba.block1.universityEnrollment.enums.AcademicDegree;
 import com.solvd.laba.block1.universityEnrollment.enums.Subject;
 import com.solvd.laba.block1.universityEnrollment.interfaces.IReport;
 
@@ -8,9 +9,10 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Professor extends Person implements IReport {
+public class Professor extends Person {
     private String employeeID;
     private Set<Subject> specializations = new HashSet<>();
+    private AcademicDegree degree;
 
     public Professor(String name, String surname, String employeeID) {
         super(name, surname);
@@ -48,9 +50,16 @@ public class Professor extends Person implements IReport {
         return "Professor";
     }
 
-    @Override
-    public String provideReport(String string) {
-        return string;
+    public String provideReport(IReport report) {
+        return report.provideReport();
+    }
+
+    public AcademicDegree getDegree() {
+        return degree;
+    }
+
+    public void setDegree(AcademicDegree degree) {
+        this.degree = degree;
     }
 
     @Override
@@ -58,6 +67,7 @@ public class Professor extends Person implements IReport {
         return "Professor{" +
                 "employeeID='" + employeeID + '\'' +
                 ", specializations=" + specializations +
+                ", degree=" + degree +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
@@ -70,11 +80,11 @@ public class Professor extends Person implements IReport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Professor professor = (Professor) o;
-        return Objects.equals(employeeID, professor.employeeID) && Objects.equals(specializations, professor.specializations);
+        return Objects.equals(employeeID, professor.employeeID) && Objects.equals(specializations, professor.specializations) && degree == professor.degree;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(employeeID, specializations);
+        return Objects.hash(employeeID, specializations, degree);
     }
 }

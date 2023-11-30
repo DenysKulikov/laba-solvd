@@ -1,6 +1,7 @@
 package com.solvd.laba.block1.universityEnrollment.university;
 
 import com.solvd.laba.block1.universityEnrollment.enums.Specialization;
+import com.solvd.laba.block1.universityEnrollment.interfaces.IProvide;
 
 import java.util.Objects;
 
@@ -26,6 +27,10 @@ public class Department {
 
     public void addSpecialization(Specialization specialization) {
         specializations.add(specialization);
+    }
+
+    public Specialization provideSpecialization(IProvide iProvide) {
+        return iProvide.provide();
     }
 
     @Override
