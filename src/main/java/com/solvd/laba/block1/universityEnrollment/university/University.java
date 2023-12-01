@@ -6,7 +6,10 @@ import com.solvd.laba.block1.universityEnrollment.interfaces.ISummarize;
 
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public final class University implements Extensible {
     private final String universityName;
@@ -21,6 +24,23 @@ public final class University implements Extensible {
         this.universityName = universityName;
     }
 
+    @Override
+    public void addDepartment(Department department) {
+        departments.add(department);
+    }
+
+    public int summarize(ISummarize<University> iSummarize) {
+        return iSummarize.summarize(this);
+    }
+
+    public Optional<Set<Department>> filterSpecializations(Function<Set<Department>, Set<Department>> function) {
+        return Optional.ofNullable(function.apply(departments));
+    }
+
+    public boolean checkDepartmentPresence(Predicate<Optional<Set<Department>>> predicate) {
+        return predicate.test(Optional.ofNullable(departments));
+    }
+
     public Set<Department> getDepartments() {
         return departments;
     }
@@ -31,15 +51,6 @@ public final class University implements Extensible {
 
     public String getUniversityName() {
         return universityName;
-    }
-
-    @Override
-    public void addDepartment(Department department) {
-        departments.add(department);
-    }
-
-    public String summarize(ISummarize iSummarize) {
-        return iSummarize.summarize(null);
     }
 
     @Override

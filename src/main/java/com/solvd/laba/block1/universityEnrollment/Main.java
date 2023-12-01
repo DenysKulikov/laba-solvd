@@ -17,15 +17,9 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -51,6 +45,8 @@ public class Main {
 
         University kpi = new University("KPI");
         Department department = new Department("FIOT");
+        department.addSpecialization(Specialization.APPLIED_MATH);
+        department.addSpecialization(Specialization.SOFTWARE_ENGINEERING);
         kpi.addDepartment(department);
         kpi.addDepartment(computerScience);
         kpi.addDepartment(mathematics);
@@ -67,7 +63,7 @@ public class Main {
             prof1.setAge(45);
             prof2.setAge(50);
             student1.setAge(21);
-            student1.setGradePointAverage(86);
+            student1.setGradePointAverage(80);
             student1.setDesiredDepartment(computerScience);
             student2.setAge(22);
             student2.setGradePointAverage(93);
@@ -144,31 +140,76 @@ public class Main {
 
         List<String> words = new ArrayList<>(List.of("apple", "banana", "orange", "kiwi", "strawberry"));
 
-        words.sort((word1, word2) -> Integer.compare(word2.length(), word1.length()));
-        LOGGER.trace("Largest word: " + words.get(0));
+        Optional<String> largestString = words.stream()
+                .max((word1, word2) -> Integer.compare(word1.length(), word2.length()));
 
-        Runnable runnable = () -> LOGGER.trace(3);
-        runnable.run();
-        Consumer course = v1 -> LOGGER.trace(v1);
-        course.accept(1);
-        Supplier supplier = () -> 22;
-        int value = (int) supplier.get();
-        Function function = v2 -> v2;
-        function.apply("1");
-        Predicate predicate = val -> true;
-        predicate.test(5);
+        LOGGER.trace("Largest word in words: " + largestString.get());
 
-        String string = (prof1.provideReport(() -> "string"));
-        LOGGER.trace(string);
+        // Runnable
+        admissionRequirements.writeToLog(() -> LOGGER.trace("Writing to log file"));
+
+        // Consumer
+        programmingCourse.addStudent(student1);
+        programmingCourse.addStudent(student2);
+        LOGGER.trace("Students before sorting: " + programmingCourse.getStudents());
+        programmingCourse.sortStudents(
+                (students) -> students.sort(Comparator.comparingDouble(Student::getGradePointAverage).reversed())
+        );
+
+        LOGGER.trace("Students after sorting: " + programmingCourse.getStudents());
+
+        // Supplier
+        department.getSpecializations().toList().stream()
+                .forEach(specialization -> {
+                    double totalCost = Arrays.stream(specialization.getSubjects())
+                            .mapToDouble(subject -> subject.getCost())
+                            .sum();
+
+                    LOGGER.trace("Total cost for " + specialization.name() + ": " + totalCost);
+                });
+
+        // Function
+        Optional<Specialization> specializationWithPhysic = department.filterSpecializations(
+                specializationCustomLinkedList -> new ArrayList<>(specializationCustomLinkedList.toList())
+                .stream()
+                .filter(specialization -> Arrays.asList(specialization.getSubjects()).contains(Subject.PHYSIC))
+                .findFirst()
+                .orElse(null));
+        LOGGER.trace("Specialization with Physic: " + specializationWithPhysic);
+
+        Optional<Set<Department>> departmentsWithPhysics = kpi.filterSpecializations(
+                departments -> departments.stream()
+                        .filter(department1 -> department1.getSpecializations().toList().stream()
+                                .anyMatch(specialization -> Arrays.asList(specialization.getSubjects()).contains(Subject.PHYSIC)))
+                        .collect(Collectors.toSet()));
+        LOGGER.trace("Department with Physic: " + departmentsWithPhysics.get());
+
+        // Predicate
+        boolean resultCheckDepartmentPresence = kpi.checkDepartmentPresence(departmentsOpt ->
+                departmentsOpt.map(departmentsSet ->
+                                departmentsSet.stream()
+                                        .anyMatch(department::equals))
+                        .orElse(false));
+        LOGGER.trace(resultCheckDepartmentPresence);
+
+        // Custom lambdas
+        String messageFromProfessor1 = (prof1.provideReport(() -> "Hi! I am professor"));
+        LOGGER.trace(messageFromProfessor1);
 
         AtomicReference<String> line1 = new AtomicReference<>();
-        kpi.summarize((msg) -> {
-            line1.set(msg);
-            return msg;
+        kpi.summarize((university) -> {
+            line1.set("University Specialization.SOFTWARE_ENGINEERING" + university.getUniversityName() + " has " + university.getDepartments().size()
+                    + " departments");
+            return university.getDepartments().size();
         });
         LOGGER.trace(line1.get());
 
-        department.provideSpecialization(() -> Specialization.SOFTWARE_ENGINEERING);
+        Optional<Set<Specialization>> result = department.provideSpecialization(
+                specializations -> specializations.toList().stream()
+                        .filter(specialization -> Arrays.asList(specialization.getSubjects()).contains(Subject.PHYSIC))
+                        .collect(Collectors.toSet())
+        );
+        LOGGER.trace("Departments containing Subject.PHYSIC: " + result.get());
     }
 
 }

@@ -1,5 +1,8 @@
 package com.solvd.laba.block1.universityEnrollment.university;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomLinkedList<T> {
     private Node<T> head;
     private int size;
@@ -82,5 +85,15 @@ public class CustomLinkedList<T> {
         }
 
         return current.data;
+    }
+
+    public List<T> toList() {
+        List<T> resultList = new ArrayList<>();
+        Node<T> current = head;
+        while (current != null) {
+            resultList.add(current.data);
+            current = current.next;
+        }
+        return resultList;
     }
 }

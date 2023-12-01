@@ -7,6 +7,7 @@ import com.solvd.laba.block1.universityEnrollment.persons.Student;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class Course {
     private String courseCode;
@@ -19,6 +20,10 @@ public class Course {
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.subject = subject;
+    }
+
+    public void sortStudents(Consumer<List<Student>> consumer) {
+        consumer.accept(students);
     }
 
     public String getCourseCode() {

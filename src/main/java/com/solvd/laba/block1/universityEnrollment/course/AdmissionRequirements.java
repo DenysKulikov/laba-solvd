@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AdmissionRequirements implements ICountCost {
     private static final Logger LOGGER = LogManager.getLogger(AdmissionRequirements.class);
@@ -23,10 +24,6 @@ public class AdmissionRequirements implements ICountCost {
         this.university = university;
         this.student = student;
         this.professor = professor;
-    }
-
-    public University getUniversity() {
-        return university;
     }
 
     @Override
@@ -60,6 +57,14 @@ public class AdmissionRequirements implements ICountCost {
         return totalCost;
     }
 
+    public void writeToLog(Runnable runnable) {
+        runnable.run();
+    }
+
+    public University getUniversity() {
+        return university;
+    }
+
     public void setUniversity(University university) {
         this.university = university;
     }
@@ -70,5 +75,27 @@ public class AdmissionRequirements implements ICountCost {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    @Override
+    public String toString() {
+        return "AdmissionRequirements{" +
+                "university=" + university +
+                ", student=" + student +
+                ", professor=" + professor +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AdmissionRequirements that = (AdmissionRequirements) o;
+        return Objects.equals(university, that.university) && Objects.equals(student, that.student) && Objects.equals(professor, that.professor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(university, student, professor);
     }
 }
