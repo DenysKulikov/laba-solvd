@@ -114,8 +114,7 @@ public class Main {
             // Print the file content using StringUtils
             LOGGER.trace(StringUtils.defaultString(fileContent));
         } catch (IOException e) {
-            e.printStackTrace();
-            // Consider logging the exception using your logger, e.g., LOGGER.error(e.getMessage());
+            LOGGER.error(e.getMessage());
         }
 
         try {
@@ -141,9 +140,9 @@ public class Main {
         List<String> words = new ArrayList<>(List.of("apple", "banana", "orange", "kiwi", "strawberry"));
 
         Optional<String> largestString = words.stream()
-                .max((word1, word2) -> Integer.compare(word1.length(), word2.length()));
+                .max(Comparator.comparingInt(String::length));
 
-        LOGGER.trace("Largest word in words: " + largestString.get());
+        largestString.ifPresent(value -> LOGGER.trace("Largest word in words: " + value));
 
         // Runnable
         admissionRequirements.writeToLog(() -> LOGGER.trace("Writing to log file"));
@@ -182,7 +181,7 @@ public class Main {
                         .filter(department1 -> department1.getSpecializations().toList().stream()
                                 .anyMatch(specialization -> Arrays.asList(specialization.getSubjects()).contains(Subject.PHYSIC)))
                         .collect(Collectors.toSet()));
-        LOGGER.trace("Department with Physic: " + departmentsWithPhysics.get());
+        departmentsWithPhysics.ifPresent(value -> LOGGER.trace("Departments with Physic: " + value));
 
         // Predicate
         boolean resultCheckDepartmentPresence = kpi.checkDepartmentPresence(departmentsOpt ->
@@ -193,11 +192,11 @@ public class Main {
         LOGGER.trace(resultCheckDepartmentPresence);
 
         // Custom lambdas
-        String messageFromProfessor1 = (prof1.provideReport(() -> "Hi! I am professor"));
+        String messageFromProfessor1 = prof1.provideReport(() -> "Hi! I am professor");
         LOGGER.trace(messageFromProfessor1);
 
         AtomicReference<String> line1 = new AtomicReference<>();
-        kpi.summarize((university) -> {
+        kpi.summarize(university -> {
             line1.set("University Specialization.SOFTWARE_ENGINEERING" + university.getUniversityName() + " has " + university.getDepartments().size()
                     + " departments");
             return university.getDepartments().size();
@@ -209,8 +208,21 @@ public class Main {
                         .filter(specialization -> Arrays.asList(specialization.getSubjects()).contains(Subject.PHYSIC))
                         .collect(Collectors.toSet())
         );
-        LOGGER.trace("Departments containing Subject.PHYSIC: " + result.get());
-    }
+        result.ifPresent(value -> LOGGER.trace("Departments containing Subject.PHYSIC: " + value));
 
+        List<Department> computerScienceDepartments = kpi.getDepartments().stream()
+                .filter(department1 -> department1.getDepartmentName().contains("Computer Science"))
+                .filter(computerScienceDepartment -> computerScienceDepartment.getSpecializations().toList().stream()
+                        .allMatch(specialization -> specialization.getAverageExamScore() == 190))
+                .collect(Collectors.toList());
+        LOGGER.trace(computerScienceDepartments);
+
+        List<String> uppercasedDepartmentNames = kpi.getDepartments().stream()
+                .peek(department1 -> LOGGER.trace("Original Department Name: " + department1.getDepartmentName()))
+                .map(department1 -> department1.getDepartmentName().toUpperCase())
+                .collect(Collectors.toList());
+
+        LOGGER.trace("Uppercased Department Names: " + uppercasedDepartmentNames);
+    }
 }
 
