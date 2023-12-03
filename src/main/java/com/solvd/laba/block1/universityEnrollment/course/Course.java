@@ -1,22 +1,29 @@
 package com.solvd.laba.block1.universityEnrollment.course;
 
+import com.solvd.laba.block1.universityEnrollment.enums.CourseDifficulty;
 import com.solvd.laba.block1.universityEnrollment.enums.Subject;
 import com.solvd.laba.block1.universityEnrollment.persons.Student;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class Course {
     private String courseCode;
     private String courseName;
     private List<Student> students = new ArrayList<>();
     private final Subject subject;
+    private CourseDifficulty courseDifficulty;
 
     public Course(String courseCode, String courseName, Subject subject) {
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.subject = subject;
+    }
+
+    public void sortStudents(Consumer<List<Student>> consumer) {
+        consumer.accept(students);
     }
 
     public String getCourseCode() {
@@ -47,6 +54,18 @@ public class Course {
         return subject.getCost();
     }
 
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public CourseDifficulty getCourseDifficulty() {
+        return courseDifficulty;
+    }
+
+    public void setCourseDifficulty(CourseDifficulty courseDifficulty) {
+        this.courseDifficulty = courseDifficulty;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
@@ -54,6 +73,7 @@ public class Course {
                 ", courseName='" + courseName + '\'' +
                 ", students=" + students +
                 ", subject=" + subject +
+                ", courseDifficulty=" + courseDifficulty +
                 '}';
     }
 
@@ -62,12 +82,11 @@ public class Course {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return Objects.equals(courseCode, course.courseCode) && Objects.equals(courseName, course.courseName)
-                && Objects.equals(students, course.students) && subject == course.subject;
+        return Objects.equals(courseCode, course.courseCode) && Objects.equals(courseName, course.courseName) && Objects.equals(students, course.students) && subject == course.subject && courseDifficulty == course.courseDifficulty;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(courseCode, courseName, students, subject);
+        return Objects.hash(courseCode, courseName, students, subject, courseDifficulty);
     }
 }

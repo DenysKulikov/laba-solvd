@@ -1,8 +1,12 @@
 package com.solvd.laba.block1.universityEnrollment.university;
 
 import com.solvd.laba.block1.universityEnrollment.enums.Specialization;
+import com.solvd.laba.block1.universityEnrollment.interfaces.IProvide;
 
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 
 public class Department {
     private String departmentName;
@@ -10,6 +14,15 @@ public class Department {
 
     public Department(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public Optional<Set<Specialization>> provideSpecialization(IProvide<CustomLinkedList<Specialization>, Set<Specialization>> iProvide) {
+        return Optional.ofNullable(iProvide.provide(specializations));
+    }
+
+    public Optional<Specialization> filterSpecializations(Function<CustomLinkedList<Specialization>,
+            Specialization> function) {
+        return Optional.ofNullable(function.apply(specializations));
     }
 
     public String getDepartmentName() {
@@ -32,7 +45,7 @@ public class Department {
     public String toString() {
         return "Department{" +
                 "departmentName='" + departmentName + '\'' +
-                ", specializations=" + specializations +
+                ", specializations=" + specializations.toList() +
                 '}';
     }
 
