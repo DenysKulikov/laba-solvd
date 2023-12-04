@@ -96,7 +96,9 @@ public class Main {
         System.out.println("Person description: " + person.getDescription());
         System.out.println(person);
         person.joinCourse(programmingCourse);
+        programmingCourse.addStudent(new Student(person.getName(), person.getSurname(), person.getStudentID()));
         person.joinCourse(math);
+        math.addStudent(new Student(person.getName(), person.getSurname(), person.getStudentID()));
 
         AdmissionRequirements admissionRequirements =
                 new AdmissionRequirements(kpi, student1, prof1);
@@ -149,7 +151,9 @@ public class Main {
 
         // Consumer
         programmingCourse.addStudent(student1);
+        student1.joinCourse(new Course(programmingCourse.getCourseCode(), programmingCourse.getCourseName(), programmingCourse.getSubject()));
         programmingCourse.addStudent(student2);
+        student2.joinCourse(new Course(programmingCourse.getCourseCode(), programmingCourse.getCourseName(), programmingCourse.getSubject()));
         LOGGER.trace("Students before sorting: " + programmingCourse.getStudents());
         programmingCourse.sortStudents(
                 (students) -> students.sort(Comparator.comparingDouble(Student::getGradePointAverage).reversed())

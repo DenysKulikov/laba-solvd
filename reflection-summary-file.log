@@ -128,3 +128,133 @@
 14:08:28.402 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Result of getDescription: Student
 14:08:28.435 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Created Student instance: Student{studentID='123', gradePointAverage=0.0, desiredUniversity=null, desiredDepartment=null, desiredSpecialization=null, name='John', surname='Doe', age=0, courses=[Course{courseCode='CS101', courseName='Introduction to Programming', students=[], subject=PROGRAMMING, courseDifficulty=null}]}
 14:08:28.435 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Created Course instance: Course{courseCode='CS101', courseName='Introduction to Programming', students=[], subject=PROGRAMMING, courseDifficulty=null}
+14:19:34.693 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Fields:
+14:19:34.697 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Name: LOGGER
+14:19:34.697 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Type: interface org.apache.logging.log4j.Logger
+14:19:34.697 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: private static final
+14:19:34.697 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Name: studentID
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Type: class java.lang.String
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: private
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Name: gradePointAverage
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Type: double
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: private
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Name: desiredUniversity
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Type: class com.solvd.laba.block1.universityEnrollment.university.University
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: private
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.698 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Name: desiredDepartment
+14:19:34.699 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Type: class com.solvd.laba.block1.universityEnrollment.university.Department
+14:19:34.699 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: private
+14:19:34.699 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.699 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Name: desiredSpecialization
+14:19:34.699 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Field Type: class com.solvd.laba.block1.universityEnrollment.enums.Specialization
+14:19:34.699 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: private
+14:19:34.699 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.700 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Constructors:
+14:19:34.700 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Constructor Name: com.solvd.laba.block1.universityEnrollment.persons.Student
+14:19:34.700 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.700 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.701 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg0
+14:19:34.701 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: class java.lang.String
+14:19:34.701 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.701 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg1
+14:19:34.701 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: class java.lang.String
+14:19:34.701 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.701 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg2
+14:19:34.701 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: class java.lang.String
+14:19:34.701 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.702 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Methods:
+14:19:34.702 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: equals
+14:19:34.702 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: boolean
+14:19:34.702 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.702 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.702 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg0
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: class java.lang.Object
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: toString
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: class java.lang.String
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: hashCode
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: int
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: joinCourse
+14:19:34.703 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: void
+14:19:34.704 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.704 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.704 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg0
+14:19:34.704 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: class com.solvd.laba.block1.universityEnrollment.course.Course
+14:19:34.704 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.704 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: getDescription
+14:19:34.704 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: class java.lang.String
+14:19:34.704 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.704 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: quitCourse
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: void
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg0
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: class com.solvd.laba.block1.universityEnrollment.course.Course
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: setStudentID
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: void
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg0
+14:19:34.705 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: class java.lang.String
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: getStudentID
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: class java.lang.String
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: getGradePointAverage
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: double
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: getDesiredUniversity
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: class com.solvd.laba.block1.universityEnrollment.university.University
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.706 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: getDesiredDepartment
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: class com.solvd.laba.block1.universityEnrollment.university.Department
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: setDesiredDepartment
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: void
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg0
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: class com.solvd.laba.block1.universityEnrollment.university.Department
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: setDesiredSpecialization
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: void
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg0
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: class com.solvd.laba.block1.universityEnrollment.enums.Specialization
+14:19:34.707 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: setGradePointAverage
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: void
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg0
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: double
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: getDesiredSpecialization
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: class com.solvd.laba.block1.universityEnrollment.enums.Specialization
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Method Name: setDesiredUniversity
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Return Type: void
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Modifiers: public
+14:19:34.708 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameters:
+14:19:34.709 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Name: arg0
+14:19:34.709 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Parameter Type: class com.solvd.laba.block1.universityEnrollment.university.University
+14:19:34.709 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - --------
+14:19:34.710 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Result of getDescription: Student
+14:19:34.750 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Created Student instance: Student{studentID='123', gradePointAverage=0.0, desiredUniversity=null, desiredDepartment=null, desiredSpecialization=null, name='John', surname='Doe', age=0, courses=[Course{courseCode='CS101', courseName='Introduction to Programming', students=[], subject=PROGRAMMING, courseDifficulty=null}]}
+14:19:34.751 [main] TRACE com.solvd.laba.block1.universityEnrollment.ReflectionRunner - Created Course instance: Course{courseCode='CS101', courseName='Introduction to Programming', students=[], subject=PROGRAMMING, courseDifficulty=null}

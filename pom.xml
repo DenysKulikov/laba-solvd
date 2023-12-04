@@ -52,19 +52,29 @@
                 </configuration>
             </plugin>
 
-            <!-- Configure Maven JAR Plugin to use Java 11 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <!-- Set the bytecode version to 11 -->
-                            <Build-Jdk>11</Build-Jdk>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                            <finalName>${project.artifactId}-${project.version}</finalName>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.solvd.laba.block1.universityEnrollment.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
