@@ -1,6 +1,6 @@
-package com.solvd.laba.block1.connectionPoolWithCompletableFuture;
+package com.solvd.laba.block1.universityEnrollment.connectionPoolWithCompletableFuture;
 
-import com.solvd.laba.block1.connectionPool.Connection;
+import com.solvd.laba.block1.universityEnrollment.connectionPool.Connection;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CompletableFuture;

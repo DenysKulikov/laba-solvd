@@ -1,7 +1,11 @@
-package com.solvd.laba.block1.connectionPool;
+package com.solvd.laba.block1.universityEnrollment.connectionPool;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Connection {
     // Mocked Connection class
+    private static final Logger LOGGER = LogManager.getLogger(Connection.class);
     private final String id;
 
     public Connection(String id) {
@@ -9,7 +13,7 @@ public class Connection {
     }
 
     public void executeQuery(String query) {
-        System.out.println("Executing query '" + query + "' on connection " + id);
+        LOGGER.trace("Executing query '" + query + "' on connection " + id);
         // Your actual query execution logic here
     }
 }

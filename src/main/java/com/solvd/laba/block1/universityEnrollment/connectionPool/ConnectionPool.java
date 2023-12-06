@@ -1,4 +1,4 @@
-package com.solvd.laba.block1.connectionPool;
+package com.solvd.laba.block1.universityEnrollment.connectionPool;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
