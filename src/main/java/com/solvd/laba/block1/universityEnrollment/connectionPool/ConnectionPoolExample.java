@@ -20,6 +20,11 @@ public class ConnectionPoolExample {
             executorService.submit(() -> {
                 Connection connection = connectionPool.getConnection();
                 connection.executeQuery("SELECT * FROM example_table");
+                try {
+                    Thread.sleep(8000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 connectionPool.releaseConnection(connection);
             });
         }

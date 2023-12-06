@@ -21,6 +21,11 @@ public class ConnectionPoolExample {
             CompletableFuture<Void> future = connectionPool.getConnectionAsync()
                     .thenAcceptAsync(connection -> {
                         connection.executeQuery("SELECT * FROM example_table");
+                        try {
+                            Thread.sleep(8000);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                         connectionPool.releaseConnection(connection);
                     });
 

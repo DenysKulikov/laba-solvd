@@ -11,7 +11,6 @@ public class ConnectionPool {
 
     private static ConnectionPool instance;
     private final BlockingQueue<Connection> connectionQueue;
-    private final Object lock = new Object();
 
     private ConnectionPool() {
         // Initialize the connection pool
