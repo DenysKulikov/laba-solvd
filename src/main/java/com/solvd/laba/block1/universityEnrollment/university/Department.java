@@ -2,13 +2,16 @@ package com.solvd.laba.block1.universityEnrollment.university;
 
 import com.solvd.laba.block1.universityEnrollment.enums.Specialization;
 import com.solvd.laba.block1.universityEnrollment.interfaces.IProvide;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 
-public class Department {
+public class Department implements Runnable {
+    private static final Logger LOGGER = LogManager.getLogger(Department.class);
     private String departmentName;
     private CustomLinkedList<Specialization> specializations = new CustomLinkedList<>();
 
@@ -39,6 +42,13 @@ public class Department {
 
     public void addSpecialization(Specialization specialization) {
         specializations.add(specialization);
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            LOGGER.trace(Thread.currentThread().getId() + " Value " + i);
+        }
     }
 
     @Override

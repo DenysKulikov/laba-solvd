@@ -227,6 +227,16 @@ public class Main {
                 .collect(Collectors.toList());
 
         LOGGER.trace("Uppercased Department Names: " + uppercasedDepartmentNames);
+
+        Department department1 = new Department("PBF");
+        University nau = new University("NAU");
+
+        // Create a Thread object and pass the Department instance to its constructor
+        Thread departmentThread = new Thread(department1);
+
+        departmentThread.start();
+        nau.start();
+
     }
 }
 

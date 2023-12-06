@@ -3,6 +3,8 @@ package com.solvd.laba.block1.universityEnrollment.university;
 import com.solvd.laba.block1.universityEnrollment.enums.Country;
 import com.solvd.laba.block1.universityEnrollment.interfaces.Extensible;
 import com.solvd.laba.block1.universityEnrollment.interfaces.ISummarize;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -11,7 +13,8 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public final class University implements Extensible {
+public final class University extends Thread implements Extensible {
+    private static final Logger LOGGER = LogManager.getLogger(University.class);
     private final String universityName;
     private Set<Department> departments = new HashSet<>();
     public static final Country COUNTRY;
@@ -51,6 +54,13 @@ public final class University implements Extensible {
 
     public String getUniversityName() {
         return universityName;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            LOGGER.trace(Thread.currentThread().getId() + " Value " + i);
+        }
     }
 
     @Override
