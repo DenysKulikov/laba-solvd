@@ -1,10 +1,14 @@
 package com.solvd.laba.block1.connectionPoolWithCompletableFuture;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
 public class ConnectionPoolExample {
+    private static final Logger LOGGER = LogManager.getLogger(ConnectionPoolExample.class);
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         // Get an instance of the connection pool
         ConnectionPool connectionPool = ConnectionPool.getInstance();
@@ -27,7 +31,7 @@ public class ConnectionPoolExample {
         for (int i = 0; i < 2; i++) {
             CompletableFuture<Void> future = connectionPool.getConnectionAsync()
                     .thenAcceptAsync(connection -> {
-                        System.out.println("CompletableFuture waiting for the next available connection");
+                        LOGGER.trace("CompletableFuture waiting for the next available connection");
                         connection.executeQuery("SELECT * FROM example_table");
                         connectionPool.releaseConnection(connection);
                     });

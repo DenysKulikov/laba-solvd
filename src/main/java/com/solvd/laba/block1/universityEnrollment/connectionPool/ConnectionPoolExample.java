@@ -1,9 +1,13 @@
 package com.solvd.laba.block1.connectionPool;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ConnectionPoolExample {
+    private static final Logger LOGGER = LogManager.getLogger(ConnectionPoolExample.class);
     public static void main(String[] args) {
         // Get an instance of the connection pool
         ConnectionPool connectionPool = ConnectionPool.getInstance();
@@ -23,7 +27,7 @@ public class ConnectionPoolExample {
         // Run 2 threads to wait for the next available connection
         for (int i = 0; i < 2; i++) {
             executorService.submit(() -> {
-                System.out.println("Thread waiting for the next available connection");
+                LOGGER.trace("Thread waiting for the next available connection");
                 Connection connection = connectionPool.getConnection();
                 connection.executeQuery("SELECT * FROM example_table");
                 connectionPool.releaseConnection(connection);
