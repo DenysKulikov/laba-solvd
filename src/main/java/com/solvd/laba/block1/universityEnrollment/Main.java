@@ -227,6 +227,41 @@ public class Main {
                 .collect(Collectors.toList());
 
         LOGGER.trace("Uppercased Department Names: " + uppercasedDepartmentNames);
+
+        Department department1 = new Department("PBF");
+        University nau = new University("NAU");
+
+        // Create a Thread object and pass the Department instance to its constructor
+        Thread departmentThread = new Thread(department1);
+
+        departmentThread.start();
+        nau.start();
+
+        int[] array = new int[1000];
+        Random random1 = new Random();
+
+        for(int i : array) {
+            array[i] = random1.nextInt();
+        }
+
+        String[] strings = {"banana", "banana", "orange"};
+        Map<String, Integer> map = new HashMap<>();
+
+        for(String string : strings) {
+            if(map.containsKey(string)) {
+                map.put(string, map.get(string) + 1);
+            } else {
+                map.put(string, 1);
+            }
+        }
+
+        map.forEach((key, value) -> System.out.println(key + " : " + value));
+
+        long before = System.currentTimeMillis();
+
+        long after = System.currentTimeMillis();
+
+        System.out.println("Time: " + (after - before));
     }
 }
 

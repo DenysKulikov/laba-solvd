@@ -23,6 +23,32 @@
             <AppenderRef ref="ReflectionRunnerFile"/>
         </Logger>
 
+        <Logger name="com.solvd.laba.block1.universityEnrollment.university.Department" level="trace">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="com.solvd.laba.block1.universityEnrollment.connectionPool.ConnectionPool" level="trace">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="com.solvd.laba.block1.universityEnrollment.connectionPool.ConnectionPoolExample" level="trace">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="com.solvd.laba.block1.universityEnrollment.connectionPool.ConnectionPoolExampleWithCompletableFuture" level="trace">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Logger name="com.solvd.laba.block1.universityEnrollment.connectionPool.Connection" level="trace">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+
+
+        <Logger name="com.solvd.laba.block1.universityEnrollment.university.University" level="trace">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
         <Logger name="com.solvd.laba.block1.universityEnrollment.Main" level="trace">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
