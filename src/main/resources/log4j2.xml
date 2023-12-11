@@ -27,6 +27,10 @@
             <AppenderRef ref="Console"/>
         </Logger>
 
+        <Logger name="com.solvd.laba.block1.universityEnrollment.connectionPool.ConnectionPool" level="trace">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
         <Logger name="com.solvd.laba.block1.universityEnrollment.connectionPool.ConnectionPoolExample" level="trace">
             <AppenderRef ref="Console"/>
         </Logger>
