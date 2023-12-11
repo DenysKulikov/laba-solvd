@@ -55,4 +55,8 @@ public abstract class Person implements IQuit, IJoin {
     public List<Course> getCourses() {
         return courses;
     }
+
+    public static void print() {
+        System.out.println("I am static");
+    }
 }

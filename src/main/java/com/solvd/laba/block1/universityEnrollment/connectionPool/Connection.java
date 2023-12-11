@@ -16,4 +16,8 @@ public class Connection {
         LOGGER.trace("Executing query '" + query + "' on connection " + id);
         // Your actual query execution logic here
     }
+
+    public String getId() {
+        return id;
+    }
 }

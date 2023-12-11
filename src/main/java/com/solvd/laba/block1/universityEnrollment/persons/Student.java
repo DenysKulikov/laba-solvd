@@ -92,6 +92,10 @@ public class Student extends Person {
         this.desiredSpecialization = desiredSpecialization;
     }
 
+    public static void print() {
+        System.out.println("Studet");
+    }
+
     @Override
     public String toString() {
         return "Student{" +

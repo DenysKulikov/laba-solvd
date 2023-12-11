@@ -237,6 +237,31 @@ public class Main {
         departmentThread.start();
         nau.start();
 
+        int[] array = new int[1000];
+        Random random1 = new Random();
+
+        for(int i : array) {
+            array[i] = random1.nextInt();
+        }
+
+        String[] strings = {"banana", "banana", "orange"};
+        Map<String, Integer> map = new HashMap<>();
+
+        for(String string : strings) {
+            if(map.containsKey(string)) {
+                map.put(string, map.get(string) + 1);
+            } else {
+                map.put(string, 1);
+            }
+        }
+
+        map.forEach((key, value) -> System.out.println(key + " : " + value));
+
+        long before = System.currentTimeMillis();
+
+        long after = System.currentTimeMillis();
+
+        System.out.println("Time: " + (after - before));
     }
 }
 
