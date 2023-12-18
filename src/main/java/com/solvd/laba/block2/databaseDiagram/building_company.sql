@@ -276,6 +276,26 @@ DELETE FROM material_buildings WHERE material_id = 1 AND building_id = 2;
 DELETE FROM material_buildings WHERE material_id = 2 AND building_id = 2;
 DELETE FROM material_buildings WHERE material_id = 3 AND building_id = 3;
 
+-- Add a New Column
+ALTER TABLE employees
+ADD COLUMN new_column VARCHAR(50);
+
+-- Modify Column Data Type
+ALTER TABLE salaries
+MODIFY COLUMN amount DECIMAL(12, 2);
+
+-- Drop a Column
+ALTER TABLE buildings
+DROP COLUMN building_description;
+
+-- Rename a Table
+ALTER TABLE material_types
+RENAME TO new_material_types;
+
+-- Add Foreign Key Constraint
+ALTER TABLE material_buildings
+ADD CONSTRAINT fk_employee_material_buildings FOREIGN KEY (employee_id) REFERENCES employees(id);
+
 SELECT
     *
 FROM companies AS c
